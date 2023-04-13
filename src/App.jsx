@@ -1,10 +1,11 @@
+import AppRoutes from './routes/AppRoutes'
 import './App.css'
 
 function App() {
   
   return (
     <div>
-     <h1>Hola Seba</h1>
+      <AppRoutes />
     </div>
   )
 }
