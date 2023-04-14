@@ -2,13 +2,20 @@ import { useState } from "react";
 import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Paper, Box, Grid, Typography, createTheme, ThemeProvider} from "@mui/material";
 import { useContext } from "react";
 import UserContext from "../context/user/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const theme = createTheme();
 
 export default function SignInSide() {
 
-    const {loginUser} = useContext(UserContext)
+    const navigate = useNavigate();
+
+    const [signUp, setSignUp] = useState(false);
+
+    const {loginUser, registerUser} = useContext(UserContext)
     const initialValues = {
+        name: "",
+        lastName: "",        
         email: "",
         password: ""
     };
@@ -25,9 +32,21 @@ export default function SignInSide() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        loginUser(user)     
+        if(signUp){
+          registerUser(user);
+        }else {
+          loginUser(user); 
+        }
+        setUser(initialValues);
+
+        navigate("/");
     };
 
+    const changeMode = () => {
+      setSignUp(!signUp)
+      setUser(initialValues)
+    }
+    
   return (
     <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: '100vh' }}>
@@ -60,15 +79,43 @@ export default function SignInSide() {
               
             </Avatar>
             <Typography component="h1" variant="h5">
-              Sign in
+               {signUp ? "Sign up" : "Sign in"}           {/* Sign in Valor original*/}
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+              {signUp && (
+                <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="name"
+                label="Nombre"
+                name="name"
+                
+                onChange={handleChange}
+                value={user.name}
+              />              
+              )}
+
+              {signUp && (
+                <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="lastName"
+                label="Apellido"
+                name="lastName"
+                
+                onChange={handleChange}
+                value={user.lastName}
+              />              
+              )}
+              
               <TextField
                 margin="normal"
                 required
                 fullWidth
                 id="email"
-                label="Email Address"
+                label="Email"
                 name="email"
                 autoComplete="email"
                 autoFocus
@@ -80,7 +127,7 @@ export default function SignInSide() {
                 required
                 fullWidth
                 name="password"
-                label="Password"
+                label="Contraseña"
                 type="password"
                 id="password"
                 autoComplete="current-password"
@@ -94,12 +141,12 @@ export default function SignInSide() {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                Sign In
+                {signUp ? "Registrate" : "Iniciar Sesión"}
               </Button>
               <Grid container>                
                 <Grid item>
-                  <Button>
-                    {"Don't have an account? Sign Up"}
+                  <Button onClick={changeMode}>
+                    {signUp ? "Ya tienes cuenta? Inicia Sesión" : "No tengo cuenta Registrate"}
                   </Button>
                 </Grid>
               </Grid>
