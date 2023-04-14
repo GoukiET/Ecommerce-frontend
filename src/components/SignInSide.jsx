@@ -146,7 +146,7 @@ export default function SignInSide() {
               <Grid container>                
                 <Grid item>
                   <Button onClick={changeMode}>
-                    {signUp ? "Ya tienes cuenta? Inicia Sesión" : "No tengo cuenta Registrate"}
+                    {signUp ? "¿Ya tienes cuenta? Inicia Sesión" : "¿No tienes cuenta? Registrate"}
                   </Button>
                 </Grid>
               </Grid>

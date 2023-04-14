@@ -1,15 +1,11 @@
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown, Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { useContext, useEffect } from 'react';
 import UserContext from '../../context/user/UserContext';
 
 const Navigation = () => {
 
-    const {verifyToken, infoUser} = useContext(UserContext);
-    
-    useEffect(() => {
-        verifyToken()
-    }, [])    
+    const {infoUser, signOut, authStatus} = useContext(UserContext);
     
     const {name, lastName} = infoUser;
    
@@ -24,14 +20,16 @@ const Navigation = () => {
                     <Nav className="me-auto">
                         <Nav.Link as={NavLink} to='/products'>Productos</Nav.Link>
                         <Nav.Link as={NavLink} to='/checkout'>Checkout</Nav.Link>
-                        <NavDropdown title={name +' '+lastName}>
-                            <NavDropdown.Item as={NavLink} to='/user/profile'>Mi Perfil</NavDropdown.Item>
-                            <NavDropdown.Item as={NavLink} to='/user/profile'>Opciones</NavDropdown.Item>
-                        </NavDropdown>
+                        {authStatus && 
+                            <NavDropdown title={name +' '+ lastName }> {/*Mi opcion <NavDropdown title={name +' '+lastName}> */}
+                                <NavDropdown.Item as={NavLink} to='/user/profile'>Mi Perfil</NavDropdown.Item>
+                                <NavDropdown.Item as={NavLink} to='/user/profile'>Opciones</NavDropdown.Item>
+                            </NavDropdown>
+                        }
                     </Nav>  
 
                     <Nav>
-                    <Nav.Link className="me-3" as={NavLink} to='/auth'>Login</Nav.Link>
+                    {authStatus ? <Button onClick={signOut} className='me-3'>Logout</Button>: <Nav.Link className="me-3" as={NavLink} to='/auth'>Login</Nav.Link>}
                     </Nav>                  
                 </Navbar.Collapse>
             </Navbar>

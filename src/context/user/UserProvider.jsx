@@ -2,10 +2,11 @@ import UserContext from "./UserContext";
 import { useReducer } from "react";
 import userReducer from "./userReducer";
 import axiosClient from "../../config/axiosClient";
-
+import { useNavigate } from "react-router-dom";
 
 const UserProvider = ({children}) => {
     
+    const navigate = useNavigate();
     const [userState, dispatch] = useReducer(userReducer, {
         infoUser: [],
         authStatus: false
@@ -58,10 +59,22 @@ const UserProvider = ({children}) => {
             console.log(error)
         }
     }
-    const msg = "Este mensaje viene desde UserProvider(useContext)"  
+    
+    const signOut = () => {
+        try {
+            dispatch({type: "SIGN_OUT"});
+            navigate("/auth");
+            console.log(userState)
+        } catch (error) {
+            
+        }
+    }
   
+    const userEdit = async (data) => {
+        const updateUser = await axiosClient.put("/user/myProfile", data)
+    }
     return (
-    <UserContext.Provider value={{msg, loginUser, registerUser, verifyToken, infoUser: userState.infoUser}}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{loginUser, registerUser, verifyToken, infoUser: userState.infoUser, authStatus: userState.authStatus,signOut}}>{children}</UserContext.Provider>
   )
 }
 
