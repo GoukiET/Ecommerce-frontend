@@ -12,7 +12,16 @@ const Navigation = () => {
                 <Navbar.Collapse id="resposive-navbar-nav">
                     <Nav className="me-auto">
                         <Nav.Link as={NavLink} to='/products'>Productos</Nav.Link>
-                    </Nav>
+                        <Nav.Link as={NavLink} to='/checkout'>Checkout</Nav.Link>
+                        <NavDropdown title="Usuario">
+                        <NavDropdown.Item as={NavLink} to='/user/profile'>Mi Perfil</NavDropdown.Item>
+                        <NavDropdown.Item as={NavLink} to='/user/profile'>Opciones</NavDropdown.Item>
+                    </NavDropdown>
+                    </Nav>  
+
+                    <Nav>
+                    <Nav.Link className="me-3" as={NavLink} to='/auth'>Login</Nav.Link>
+                    </Nav>                  
                 </Navbar.Collapse>
             </Navbar>
         </>
