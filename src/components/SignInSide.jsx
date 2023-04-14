@@ -28,7 +28,7 @@ export default function SignInSide() {
             [e.target.name]: e.target.value
         }))
     }
-    console.log(user);
+    /* console.log(user); */
 
     const handleSubmit = (event) => {
         event.preventDefault();
