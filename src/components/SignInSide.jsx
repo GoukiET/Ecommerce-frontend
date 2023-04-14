@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Paper, Box, Grid, Typography, createTheme, ThemeProvider} from "@mui/material";
-
+import { useContext } from "react";
+import UserContext from "../context/user/UserContext";
 
 const theme = createTheme();
 
 export default function SignInSide() {
 
+    const {loginUser} = useContext(UserContext)
     const initialValues = {
         email: "",
         password: ""
@@ -22,7 +24,8 @@ export default function SignInSide() {
     console.log(user);
 
     const handleSubmit = (event) => {
-        event.preventDefault();     
+        event.preventDefault();
+        loginUser(user)     
     };
 
   return (
