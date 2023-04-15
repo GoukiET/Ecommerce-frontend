@@ -1,8 +1,10 @@
 import ProductContext from "./ProductContext"
 
 const ProductProvider = ({children}) => {
+
+    const msg = "Hola Muchacho!";
     return(
-        <ProductContext.Provider>{children}</ProductContext.Provider>
+        <ProductContext.Provider value={{msg}}>{children}</ProductContext.Provider>
     )
 }
 

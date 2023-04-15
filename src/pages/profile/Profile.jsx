@@ -6,10 +6,10 @@ const Profile = () => {
   const {infoUser, userEdit} = useContext(UserContext);  
 
 
-  const {name, lastName, email} = infoUser;
+  const {name, lastName, email, isAdmin} = infoUser;
   return (
     <div>
-        <h1>{name}</h1>
+        <h1>{name +' '+ lastName}</h1>
         <h3>{email}</h3>
         <p>{isAdmin ? "Administrador" : "Cliente"}</p>
     </div>
