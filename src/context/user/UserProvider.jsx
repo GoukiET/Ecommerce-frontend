@@ -74,7 +74,7 @@ const UserProvider = ({children}) => {
         const updateUser = await axiosClient.put("/user/myProfile", data)
     }
     return (
-    <UserContext.Provider value={{loginUser, registerUser, verifyToken, infoUser: userState.infoUser, authStatus: userState.authStatus,signOut}}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{loginUser, registerUser, verifyToken, infoUser: userState.infoUser, authStatus: userState.authStatus,signOut, userEdit}}>{children}</UserContext.Provider>
   )
 }
 

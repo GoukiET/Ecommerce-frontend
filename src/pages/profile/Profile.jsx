@@ -3,10 +3,10 @@ import { useContext } from "react";
 
 const Profile = () => {
 
-  const {infoUser} = useContext(UserContext);  
+  const {infoUser, userEdit} = useContext(UserContext);  
 
 
-  const {name, email, isAdmin} = infoUser;
+  const {name, lastName, email} = infoUser;
   return (
     <div>
         <h1>{name}</h1>
