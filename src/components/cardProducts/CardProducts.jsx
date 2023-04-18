@@ -5,7 +5,7 @@ import { Button } from "react-bootstrap";
 
 const CardProducts = ({product}) => {
     
-    const {_id, bandName, albumName, img, price, stock } = product;
+    const {_id, bandName, albumName, img, format, stock } = product;
 
 
   return (
@@ -27,7 +27,7 @@ const CardProducts = ({product}) => {
                 <h4 className="text-sm text-gray-700">{albumName}</h4> 
               </div>
               <p className="text-sm font-medium text-gray-900">
-                ${price}
+                {format}
               </p>
             </div>
           </div>
