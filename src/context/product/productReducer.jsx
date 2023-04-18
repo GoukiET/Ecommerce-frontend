@@ -5,7 +5,7 @@ const productReducer = (state, action) => {
         case "GET_PRODUCTS":
             return {
                 ...state,
-                product: payload,
+                products: payload,
                 product: [{
                     id: "",
                     albumName: "",

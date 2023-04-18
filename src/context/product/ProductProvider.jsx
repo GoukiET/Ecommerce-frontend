@@ -1,31 +1,49 @@
 import ProductContext from "./ProductContext";
 import { useReducer } from "react";
 import productReducer from "./productReducer";
+import axiosClient from "../../config/axiosClient"
 
-const ProductProvider = ({children}) => {
+const ProductProvider = ({ children }) => {
+  const initialState = {
+    products: [],
+    product: [
+      {
+        id: "",
+        albumName: "",
+        bandName: "",
+        price: "",
+        format: "",
+        img: "",
+        SKU: "",
+        stock: "",
+      },
+    ],
+  };
 
-    const initialState = {
-        products: [],
-        product: [{
-            id: "",
-            albumName: "",
-            bandName: "",
-            price:"" ,
-            format: "",
-            img: "",
-            SKU: "",
-            stock: ""
-        }]
+  const [productState, dispatch] = useReducer(productReducer, initialState);
+
+  const getProducts = async () => {
+    try {
+      const products = await axiosClient.get("/products");
+      const productsInfo = products.data.info;
+      dispatch({ type: "GET_PRODUCTS", payload: productsInfo });
+    } catch (error) {
+        console.log(error)
     }
+  };
 
-    const [productState, dispatch] = useReducer(x, initialState);
-
-    const getProducts = async() => {
-        const products = await axiosClient.get("/products")
+  const getProduct = async(id) => {
+    try {
+      const product = await axiosClient.get(`/products/${id}`); 
+      const productInfo = product.data.info;
+      dispatch({ type: "GET_PRODUCT", payload: productInfo });
+    } catch (error) {
+        console.log(error)
     }
-    return(
-        <ProductContext.Provider value={{}}>{children}</ProductContext.Provider>
-    )
-}
+  }
+  return (
+    <ProductContext.Provider value={{getProducts, products: productState.products, product: productState.product, getProduct}}>{children}</ProductContext.Provider>
+  );
+};
 
 export default ProductProvider;
