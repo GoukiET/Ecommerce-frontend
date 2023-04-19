@@ -1,9 +1,9 @@
 import CartContext from "./CartContext";
-import { useReducer } from "react";
+import { useReducer } from 'react';
 import cartReducer from "./cartReducer";
-import { addCardItem, removeCardItem, clearCartItem } from "./cartFuntion";
+import { addCartItem, removeCartItem, clearCartItem } from "./cartFunction";
 
-const CartProvider = ({Children}) => {
+const CartProvider = ({children}) => {
 
     const initialState = {
         isCartOpen: false,
@@ -11,13 +11,15 @@ const CartProvider = ({Children}) => {
         cartCount: 0,
         cartTotal: 0
     }
+
     const [{isCartOpen, cartItems, cartCount, cartTotal}, dispatch] = useReducer(cartReducer, initialState)
 
-    // Funcion para actualizar los productos en el reducer del carrito funcion acumuladora (metodo reduce)
+    //* Funcion que actualiza los productos en mi reducer del carrito (funcion acumuladora)
 
     const updateCartItemsReducer = (newCartItems) => {
-        const newCartCount = newCartItems.reduce((total, cartItem) => total + cartItem.quantity, 0)
-        const newCartTotal = newCartItems.reduce((total, cartItem) => total + cartItem.quantity * cartItem.price, 0)
+        // reduce es un metodo de array que sirve para acumular valores
+        const newCartCount = newCartItems.reduce((total, cartItem) => total + cartItem.quantity, 0);
+        const newCartTotal = newCartItems.reduce((total, cartItem) => total + cartItem.quantity * cartItem.price, 0);
 
         dispatch({
             type: "SET_CART_ITEMS",
@@ -30,17 +32,17 @@ const CartProvider = ({Children}) => {
     }
 
     const addItemToCart = (productToAdd) => {
-        const newCartItems = addCardItem(cartItems, productToAdd)
+        const newCartItems = addCartItem(cartItems, productToAdd)
         updateCartItemsReducer(newCartItems)
     }
 
     const removeItemToCart = (cartItemToRemove) => {
-        const newCartItems = removeCardItem(cartItems, cartItemToRemove)
+        const newCartItems = removeCartItem(cartItems, cartItemToRemove)
         updateCartItemsReducer(newCartItems)
     }
 
-    const clearItemToCart = (cartItemToclear) => {
-        const newCartItems = clearCardItem(cartItems, cartItemToClear)
+    const clearItemToCart = (cartItemToClear) => {
+        const newCartItems = clearCartItem(cartItems, cartItemToClear)
         updateCartItemsReducer(newCartItems)
     }
 
@@ -56,10 +58,14 @@ const CartProvider = ({Children}) => {
             payload: bool
         })
     }
+  
 
   return (
-    <CartContext.Provider value={{isCartOpen, cartItems, cartCount, cartTotal, addItemToCart, removeItemToCart, clearItemToCart, clearItemFromCheckout, setIsCartOpen}}>{Children}</CartContext.Provider>
+    <CartContext.Provider value={{isCartOpen, cartItems, cartCount, cartTotal, addItemToCart, removeItemToCart, clearItemToCart, clearItemFromCheckout, setIsCartOpen}}>{children}</CartContext.Provider>
   )
 }
 
 export default CartProvider
+
+
+

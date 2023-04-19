@@ -3,11 +3,9 @@ const cartReducer = (state, action) => {
 
     switch (type) {
         case "SET_CART_ITEMS":
-            return{...state, ...payload};
-        
+            return {...state, ...payload};
         case "SET_IS_CART_OPEN":
             return {...state, isCartOpen: payload}
-        
         case "CLEAR_CHECKOUT":
             return {
                 isCartOpen: false,
@@ -16,7 +14,9 @@ const cartReducer = (state, action) => {
                 cartTotal: 0
             }
         default:
-            throw new Error(`unhandle type of ${type} in cartReducer`)
+            throw new Error(`unhandled type of ${type} in cartReducer`)
     }
 }
+
 export default cartReducer;
+

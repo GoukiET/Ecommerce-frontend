@@ -1,13 +1,17 @@
 import ProductContext from "../../context/product/ProductContext";
 import { useContext, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import CartContext from "../../context/cart/CartContext";
 
 const Product = () => {
 
     const {id} = useParams();
     const {getProduct, product} = useContext(ProductContext)
+    const {addItemToCart, cartCount} = useContext(CartContext)
 
-    const { bandName, albumName, price, img, description, format, SKU, stock } = product[0]
+    const handleAdd = () => {if(cartCount < stock) addItemToCart(product[0])}
+
+    const { bandName, albumName, price, img, description, format, SKU, stock } = product[0];
 
     useEffect(() => {
         const fetchProduct = async() => {
@@ -102,7 +106,7 @@ const Product = () => {
                           <button
                             type="button"
                             className="mt-10 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                            
+                            onClick={handleAdd}
                           >
                             Añadir
                           </button>
