@@ -13,6 +13,9 @@ const ProductProvider = ({ children }) => {
         bandName: "",
         price: "",
         format: "",
+        description: "",
+        origin: "",
+        label: "",
         img: "",
         SKU: "",
         stock: "",
@@ -45,7 +48,7 @@ const ProductProvider = ({ children }) => {
   const reduceStock = async(cartItems) => {
     const productos = { cartItems }
     const result = await axiosClient.put("/product/reduce-stock", productos)
-
+    console.log(result)
   }
   return (
     <ProductContext.Provider value={{getProducts, products: productState.products, product: productState.product, getProduct, reduceStock}}>{children}</ProductContext.Provider>

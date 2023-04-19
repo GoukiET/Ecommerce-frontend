@@ -31,8 +31,9 @@ const CardProducts = ({product}) => {
               </p>
             </div>
           </div>
+          {stock === 0 ? <h5 className="text-red-900">Sin Stock</h5> :  <Button >comprar</Button>}
         </Link>
-        {stock === 0 ? <h5 className="text-red-900">Sin Stock</h5> :  <Button >comprar</Button>}
+        
       </div>
   )
 }

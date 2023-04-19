@@ -2,13 +2,13 @@ import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import CartContext from "../context/cart/CartContext";
 import { useContext } from "react";
 import ProductContext from "../context/product/ProductContext";
-import UserContext from "../context/user/UserContext";
+
 
 export default function Paypal() {
     const {cartTotal, clearItemFromCheckout, cartItems} = useContext(CartContext)
-    const {reduceStock} = UserContext(ProductContext)
+    const {reduceStock} = useContext(ProductContext)
     return (
-        <PayPalScriptProvider options={{ "client-id": "ENRCDKCE85J5A" }}>
+        <PayPalScriptProvider options={{ "client-id": "AaaGQSRSGlewsnuyl9M7ymZ_wkioDhF4v_F8UzivCcOGy_BzjHOc9XBv2qKxQ0thsssbpNdN0H6sin0e" }}>
             <PayPalButtons
                 createOrder={(data, actions) => {
                     return actions.order.create({

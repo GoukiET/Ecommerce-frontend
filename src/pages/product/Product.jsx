@@ -9,9 +9,9 @@ const Product = () => {
     const {getProduct, product} = useContext(ProductContext)
     const {addItemToCart, cartCount} = useContext(CartContext)
 
-    const handleAdd = () => {if(cartCount < stock) addItemToCart(product[0])}
+    const handleAdd = () => {if(cartCount <= stock) addItemToCart(product[0])}
 
-    const { bandName, albumName, price, img, description, format, SKU, stock } = product[0];
+    const { bandName, albumName, price, img, description, format, SKU, stock, label, origin } = product[0];
 
     useEffect(() => {
         const fetchProduct = async() => {
@@ -132,12 +132,17 @@ const Product = () => {
     
                         <div className="mt-2 space-y-6">
                           <p className="text-sm mb-2 text-gray-600">
-                            {format}
+                            <span><b>Formato:</b> {format}</span> 
                           </p>
                         </div>
                         <div className="mt-2 mb-2 space-y-6">
                           <p className="text-sm text-gray-600">
-                            {format}
+                          <span><b>Sello Discográfico:</b> {label}</span> 
+                          </p>
+                        </div>
+                        <div className="mt-2 mb-2 space-y-6">
+                          <p className="text-sm text-gray-600">
+                          <span><b>Origen:</b> {origin}</span> 
                           </p>
                         </div>
                       </div>
