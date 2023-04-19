@@ -41,8 +41,14 @@ const ProductProvider = ({ children }) => {
         console.log(error)
     }
   }
+
+  const reduceStock = async(cartItems) => {
+    const productos = { cartItems }
+    const result = await axiosClient.put("/product/reduce-stock", productos)
+
+  }
   return (
-    <ProductContext.Provider value={{getProducts, products: productState.products, product: productState.product, getProduct}}>{children}</ProductContext.Provider>
+    <ProductContext.Provider value={{getProducts, products: productState.products, product: productState.product, getProduct, reduceStock}}>{children}</ProductContext.Provider>
   );
 };
 

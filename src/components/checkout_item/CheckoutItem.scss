@@ -26,6 +26,8 @@
       display: flex;
   
       .arrow {
+        width: 27px;
+        align-items: center;
         cursor: pointer;
       }
   
@@ -35,6 +37,7 @@
     }
   
     .remove-button {
+      width: 48px;
       padding-left: 12px;
       cursor: pointer;
     }

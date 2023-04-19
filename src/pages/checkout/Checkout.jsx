@@ -3,7 +3,7 @@ import "./Checkout.scss";
 import { useContext } from "react";
 import CartContext from "../../context/cart/CartContext";
 import CheckoutItem from "../../components/checkout_item/CheckoutItem";
-
+import Paypal from "../../components/paypal";
 
 const Checkout = () => {
 
@@ -13,19 +13,19 @@ const Checkout = () => {
     <div className="checkout-container">
     <div className="checkout-header">
       <div className="header-block">
-        <span>Product</span>
+        <span>Producto</span>
       </div>
       <div className="header-block">
-        <span>Description</span>
+        <span>Descripción</span>
       </div>
       <div className="header-block">
-        <span>Quantity</span>
+        <span>Cantidad</span>
       </div>
       <div className="header-block">
-        <span>Price</span>
+        <span>Precio</span>
       </div>
       <div className="header-block">
-        <span>Remove</span>
+        <span>Remover</span>
       </div>
     </div>
     { cartItems.map((cartItem) => (
@@ -33,7 +33,7 @@ const Checkout = () => {
     ))}
     <span className="total">Total: ${cartTotal}</span>
 
-    {/* {cartItems.length ? <Paypal /> : null} */}
+    {cartItems.length ? <Paypal /> : null}
     
   
   </div>
