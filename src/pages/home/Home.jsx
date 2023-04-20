@@ -1,8 +1,9 @@
+import ControlledCarousel from '../../components/carousel/ControlledCarousel';
 
 const Home = () => {
   return (
     <div>
-        <h1>Inicio de la pagina</h1>
+        <ControlledCarousel />
     </div>
   )
 }

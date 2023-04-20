@@ -5,7 +5,7 @@ import UserContext from '../../context/user/UserContext';
 import CartContext from '../../context/cart/CartContext';
 import CartIcon from '../../components/cartModal/cartIcon/CartIcon';
 import CartDropDown from '../../components/cartModal/cartDropDown/CartDropDown';
-
+import SickBangers from '../../assets/images/sickbanger.png';
 const Navigation = () => {
 
     const {infoUser, signOut, authStatus} = useContext(UserContext);
@@ -17,7 +17,7 @@ const Navigation = () => {
         <>
             <Navbar collapseOnSelect expand="lg" variant="dark" bg="dark">
                 <Navbar.Brand as={NavLink} to='/' className="ms-3">
-                    Home
+                    <img src={SickBangers} alt='' />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="resposive-navbar-nav">

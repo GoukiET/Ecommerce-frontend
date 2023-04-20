@@ -105,7 +105,7 @@ const Product = () => {
                           {" "}
                           <button
                             type="button"
-                            className="mt-10 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            className="mt-10 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                             onClick={handleAdd}
                           >
                             Añadir
@@ -119,14 +119,14 @@ const Product = () => {
                         <h3 className="sr-only">Description</h3>
     
                         <div className="space-y-6">
-                          <p className="text-base text-gray-900">
+                          <p className="text-base text-gray-900 text-justify">
                             {description}
                           </p>
                         </div>
                       </div>
     
                       <div className="mt-10">
-                        <h2 className="text-sm font-medium text-gray-900">
+                        <h2 className="text-base font-medium text-gray-900">
                           Detalle
                         </h2>
     
