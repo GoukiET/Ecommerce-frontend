@@ -11,17 +11,18 @@
     .shop-icon {
         width: 30px;
         height: 30px;
+        margin-left: -15px;
     }
 
     .item-count{
         position: absolute;
-        font-size: 10px;
+        font-size: 15px;
         font-weight: bold;        
-        bottom: 12px;
+        bottom: 10px;
         color: white;
-        margin-left: 5px;
+        margin-left: 1px;
         border: 1px solid red;
-        border-radius: 50%;
-        
+        background-color: red;
+        padding: 3;
     }
 }
