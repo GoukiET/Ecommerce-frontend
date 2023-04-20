@@ -19,19 +19,21 @@ const CardProducts = ({product}) => {
                 className="w-full h-full object-center object-cover lg:w-full lg:h-full"
               />
             </div>
-            <div className="mt-4 flex justify-between">
+            <div className="mt-4 flex justify-center">
               <div>
-                <h3 className="text-sm text-gray-700">{bandName}</h3> 
-              </div>
-              <div>
-                <h4 className="text-sm text-gray-700">{albumName}</h4> 
-              </div>
-              <p className="text-sm font-medium text-gray-900">
+                <h3 className="text-sm text-gray-700">{bandName} - {albumName}</h3>                
+              </div>       
+            </div>
+            <div>
+            <p className="flex text-sm font-medium text-gray-900 justify-center">
                 {format}
               </p>
             </div>
           </div>
-          {stock === 0 ? <h5 className="text-red-900">Sin Stock</h5> :  <Button >comprar</Button>}
+          <div className="flex justify-center">
+          {stock === 0 ? <h5 className="text-red-900">Sin Stock</h5> :  <Button>comprar</Button>}
+          </div>
+          
         </Link>
         
       </div>
