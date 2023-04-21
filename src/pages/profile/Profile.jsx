@@ -27,7 +27,7 @@ const Profile = () => {
               align="center"
               color="text.secondary"
             >
-              Nombre: {name}
+              Nombre: {name} {lastName}
             </Typography>
             <Typography variant="h6" color="text.secondary" align="center">
               Email: {email}
@@ -37,7 +37,7 @@ const Profile = () => {
             </Typography>
           </CardContent>         
         </Card>
-      </Container>      
+      </Container>           
     </div>
   )
 }
