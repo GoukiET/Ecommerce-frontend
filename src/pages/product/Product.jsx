@@ -66,11 +66,11 @@ const Product = () => {
                     </ol>
                   </nav>
                   <div className="mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8">
-                    <div className="w-full rounded-lg overflow-hidden lg:block">
+                    <div className="w-full overflow-hidden lg:block">
                       <img
                         src={img}
                         alt="Two each of gray, white, and black shirts laying flat."
-                        className="w-auto h-80 object-center object-cover"
+                        className="w-auto h-80 object-center object-cover rounded-lg"
                       />
                     </div>
                   </div>
@@ -78,13 +78,13 @@ const Product = () => {
                   <div className="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
                     <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
                       <h1 className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
-                       {bandName} {albumName}
+                       {bandName} - {albumName}
                       </h1>
                     </div>
     
                     <div className="mt-4 lg:mt-0 lg:row-span-3">
                       <h2 className="text-3xl font-extrabold text-gray-400">
-                        Características
+                        Detalle
                       </h2>
     
                       <p className="text-base text-gray-900 mt-6">
@@ -115,9 +115,7 @@ const Product = () => {
                     </div>
     
                     <div className="py-10 lg:pt-6 lg:pb-16 lg:col-start-1 lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-                      <div>
-                        <h3 className="sr-only">Description</h3>
-    
+                      <div> 
                         <div className="space-y-6">
                           <p className="text-base text-gray-900 text-justify">
                             {description}
@@ -127,11 +125,11 @@ const Product = () => {
     
                       <div className="mt-10">
                         <h2 className="text-base font-medium text-gray-900">
-                          Detalle
+                        Características
                         </h2>
     
                         <div className="mt-2 space-y-6">
-                          <p className="text-sm mb-2 text-gray-600">
+                          <p className="text-sm text-gray-600">
                             <span><b>Formato:</b> {format}</span> 
                           </p>
                         </div>

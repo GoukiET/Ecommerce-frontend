@@ -25,7 +25,7 @@ const Navigation = () => {
                         <Nav.Link as={NavLink} to='/products'>Productos</Nav.Link>
                         <Nav.Link as={NavLink} to='/checkout'>Checkout</Nav.Link>
                         {authStatus && 
-                            <NavDropdown title={name +' '+ lastName }> {/*Mi opcion <NavDropdown title={name +' '+lastName}> */}
+                            <NavDropdown title={name +' '+ lastName }> 
                                 <NavDropdown.Item as={NavLink} to='/user/profile'>Mi Perfil</NavDropdown.Item>
                                 <NavDropdown.Item as={NavLink} to='/user/profile'>Opciones</NavDropdown.Item>
                             </NavDropdown>
