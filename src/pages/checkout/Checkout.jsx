@@ -3,7 +3,7 @@ import "./Checkout.scss";
 import { useContext } from "react";
 import CartContext from "../../context/cart/CartContext";
 import CheckoutItem from "../../components/checkout_item/CheckoutItem";
-import Paypal from "../../components/paypal";
+import Paypal from "../../components/Paypal";
 
 const Checkout = () => {
 
